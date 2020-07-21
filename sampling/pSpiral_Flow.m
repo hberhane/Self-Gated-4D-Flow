@@ -16,16 +16,11 @@ m   = 1*(prod(S)/4)^(1/4); % Nonlinear scaling towards the center to avoid exces
 k   = 1/4; % radial shift; k=n implies central n pixels will not be sampled
 
 
-% gr = (sqrt(5) + 1)/2; % golden ratio for radial increment
-% gr = 2-gr;
-ga = (sqrt(5) + 1)/2; % golden ratio for radial increment
-ga = 2-ga;
 
-% ga = 35^(1/3); % ratio for angular increment; other options: 35, 16, 13
-% ga = rem(ga,1);
-% gr = 35^(1/3); % ratio for angular increment; other options: 35, 16, 13
-gr = sqrt(437);
-% gr = rem(gr,1);
+ga = (sqrt(5) + 1)/2; % golden ratio for angular increment
+
+
+gr = 35^(1/3); % ratio for radial increment; other options: 35, 16, 13
 
 
 
