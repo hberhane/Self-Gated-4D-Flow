@@ -18,7 +18,7 @@ obj.data.Yx = obj.data.Yx*sqrt(R);
 obj.data.Yy = obj.data.Yy*sqrt(R);
 obj.data.Yz = obj.data.Yz*sqrt(R);
 obj.options.ReVEALOpts.wvar = obj.options.ReVEALOpts.wvar*R;
-fprintf(sprintf('R = %s\n',num2str(R)))
+%fprintf(sprintf('R = %s\n',num2str(R)))
 
 % Check if multiple sets of sensitivity maps are used from espirit
 if size(obj.data.sensMaps, 5) == 2

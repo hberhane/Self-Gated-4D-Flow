@@ -140,9 +140,6 @@ opt.repeatFrac = size(TMP,1)/size(U,1);
 repeat_percent = 100*(size(TMP,1)-size(U,1))/size(TMP,1);
 % *******************************************************
 
-% param.respRange = (param.FOV(1) / rawData.hdr.Config.NColMeas)*respRange;
-param.respRange = opt.resp_range;
-disp(['Respiratory range is ',num2str(param.respRange), ' mm']);
 
 % Respiratory phase indices
 disp(['Binning into ',num2str(opt.nRPhases), ' respiratory phases...']);

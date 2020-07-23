@@ -67,26 +67,8 @@ elseif length(sizes)==4
 
 %    warning('lower t lambda')
     % High Temporal Weights
-    k = 10; % Normally 10
-    disp(['Temporal lambda weight is: ',num2str(k)]);
-%     lambda_band = zeros(8,1);
-%     lambda_band(1) = 0.01*lambda;
-%     lambda_band(2) = 1*lambda;
-%     lambda_band(3) = 1*lambda;
-%     lambda_band(4) = 1*lambda;
-%     lambda_band(5) = 1*lambda;
-%     lambda_band(6) = 1*lambda;
-%     lambda_band(7) = 1*lambda;
-%     lambda_band(8) = 2*lambda;
-%     lambda_band(9) = k*lambda;
-%     lambda_band(10) = k*lambda;
-%     lambda_band(11) = k*lambda;
-%     lambda_band(12) = k*lambda;
-%     lambda_band(13) = k*lambda;
-%     lambda_band(14) = k*lambda;
-%     lambda_band(15) = k*lambda;
-%     lambda_band(16) = 1.5*k*lambda;
-
+    k = 5; 
+    %disp(['Temporal lambda weight is: ',num2str(k)]);
     lambda_band = zeros(8,1);
     lambda_band(1) = 0.01*lambda;
     lambda_band(2) = 1*lambda;
@@ -103,7 +85,25 @@ elseif length(sizes)==4
     lambda_band(13) = k*lambda;
     lambda_band(14) = k*lambda;
     lambda_band(15) = k*lambda;
-    lambda_band(16) = k*lambda;
+    lambda_band(16) = 1.5*k*lambda;
+
+%     lambda_band = zeros(8,1);
+%     lambda_band(1) = 0.01*lambda;
+%     lambda_band(2) = 1*lambda;
+%     lambda_band(3) = 1*lambda;
+%     lambda_band(4) = 1*lambda;
+%     lambda_band(5) = 1*lambda;
+%     lambda_band(6) = 1*lambda;
+%     lambda_band(7) = 1*lambda;
+%     lambda_band(8) = 2*lambda;
+%     lambda_band(9) = k*lambda;
+%     lambda_band(10) = k*lambda;
+%     lambda_band(11) = k*lambda;
+%     lambda_band(12) = k*lambda;
+%     lambda_band(13) = k*lambda;
+%     lambda_band(14) = k*lambda;
+%     lambda_band(15) = k*lambda;
+%     lambda_band(16) = k*lambda;
 
 
     lambda_vec = zeros([sizes,16]);

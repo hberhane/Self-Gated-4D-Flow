@@ -14,9 +14,12 @@ function [rWeights, respEfficiency] = binRespSoft_v2(lengthDat, R, opt, param)
 % RESAMPLE SG TO MATCH MEASURED DATA
 % --------------------------------------------------------------------------------------------------
 rAmpDat = R;
-if ~strcmp(opt.sigExt, 'PTSola')
 rAmpDat = (resampleSINC(rAmpDat',opt.sgI))';
-end
+
+% interp_factor = opt.sgI;
+% xq = (1/interp_factor):(1/interp_factor):length(rAmpDat);
+% rAmpDat = interp1(rAmpDat, xq, 'spline');
+
 % rAmpDat = interp1(rAmpDat,1+(1/opt.sgI):(1/opt.sgI):length(rAmpDat)+1,'linear'); 
 tmp = zeros(lengthDat,1);
 tmp(1:opt.sgI-1) = ones(opt.sgI-1,1)*R(1); tmp(opt.sgI:end) = rAmpDat(1:end-opt.sgI+1);
@@ -115,38 +118,38 @@ end
 sigma = sigmaFinal;
 
 % =========================================================================
-if opt.disp
-    
-    % Plot bins on profile
-    figure;
-    t = [1:1:length(R)] * opt.TR;
-    plot(t,R,'b'); hold on; %plot(t,R,'.k'); hold off;
-
-    for phase = 1 : opt.nRPhases
-        binLo = mu(phase) - (sigma(phase)/2);
-        binHi = mu(phase) + (sigma(phase)/2);
-        FWHMLo = mu(phase) - (FWHM(phase)/2);
-        FWHMHi = mu(phase) + (FWHM(phase)/2);
-        
-        plot([1,t(end)],[mu(phase), mu(phase)], '--k'); hold on;
-        plot([1,t(end)],[FWHMLo,FWHMLo],'--r'); hold on;
-        plot([1,t(end)],[FWHMHi,FWHMHi],'--r'); hold on;
-%         plot(t,R,'b'); hold on; %plot(t,R,'.k'); hold off;
-    end
-
-    % Plot weights fxns on respiratory histogram
-    figure;
-    rAmpDat_Sort = sort(rAmpDat,'ascend');
-    h = histogram(rAmpDat_Sort, 70); hold on;
-    h.FaceAlpha = 0.2;
-    factor = max(h.Values);
-    
-    for phase = 1 : opt.nRPhases
-        rWeights_Sort = exp(-((rAmpDat_Sort-mu(phase)).^order)/(sigma(phase)^2));
-        plot(rAmpDat_Sort, rWeights_Sort*factor, 'LineWidth',4); hold on
-        axis([-inf, inf, 0, factor+(factor/4)]);
-    end
-end
+% if opt.disp
+%     
+%     % Plot bins on profile
+%     figure;
+%     t = [1:1:length(R)] * opt.TR;
+%     plot(t,R,'b'); hold on; %plot(t,R,'.k'); hold off;
+% 
+%     for phase = 1 : opt.nRPhases
+%         binLo = mu(phase) - (sigma(phase)/2);
+%         binHi = mu(phase) + (sigma(phase)/2);
+%         FWHMLo = mu(phase) - (FWHM(phase)/2);
+%         FWHMHi = mu(phase) + (FWHM(phase)/2);
+%         
+%         plot([1,t(end)],[mu(phase), mu(phase)], '--k'); hold on;
+%         plot([1,t(end)],[FWHMLo,FWHMLo],'--r'); hold on;
+%         plot([1,t(end)],[FWHMHi,FWHMHi],'--r'); hold on;
+% %         plot(t,R,'b'); hold on; %plot(t,R,'.k'); hold off;
+%     end
+% 
+%     % Plot weights fxns on respiratory histogram
+%     figure;
+%     rAmpDat_Sort = sort(rAmpDat,'ascend');
+%     h = histogram(rAmpDat_Sort, 70); hold on;
+%     h.FaceAlpha = 0.2;
+%     factor = max(h.Values);
+%     
+%     for phase = 1 : opt.nRPhases
+%         rWeights_Sort = exp(-((rAmpDat_Sort-mu(phase)).^order)/(sigma(phase)^2));
+%         plot(rAmpDat_Sort, rWeights_Sort*factor, 'LineWidth',4); hold on
+%         axis([-inf, inf, 0, factor+(factor/4)]);
+%     end
+% end
 placeHolder = [];
 % maybe some more plotting here for meetings/testing purposes
 % =========================================================================
