@@ -30,7 +30,7 @@ opt.sgI         = 9;
 
 % Load raw data (.dat) file
 %---------------------------------------------------------------------------------------------------
-opt.fName = which('meas_MID00039_FID08581_BEAT_FQ_SG_785A_WholeHeart_20190314.dat');
+opt.fName = which('meas_MID00396_FID18723_4D_FLOW_WIP_retro_ePAT_aorta.dat');
 [Dat, ~, param, ~, rawData] = readWrapper4(opt);
 rawData = rawData{2};
 param.TR = param.TR * 1000;
